@@ -36,8 +36,15 @@ body {
   max-width: 50rem;
   color: var(--text-main);
   border: 2px solid rgba(135,133,130,0.1);
-  background-position: 10% 1%;
+  background-position: 5% 1%;
   background-repeat: no-repeat;
+}
+
+@media (max-width: 500px) {
+
+  .main-container {
+    background-position: 35% 1%;
+  }
 }
 
 .logo-container {
