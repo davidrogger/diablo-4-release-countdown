@@ -35,6 +35,21 @@ function createElementWithClass(element, className) {
   return newElement;
 }
 
+function updateElements(location, newTime) {
+  if (location.day.innerText != newTime.day) {
+    location.day.innerText = newTime.day;
+  }
+  if (location.hour.innerText != newTime.hour) {
+    location.hour.innerText = newTime.hour;
+  }
+  if (location.minute.innerText != newTime.minute) {
+    location.minute.innerText = newTime.minute;
+  }
+  if (location.second.innerText != newTime.second) {
+    location.second.innerText = newTime.second;
+  }
+}
+
 function createCountdown(type, location) {
   const day = createElementWithClass('span', `${type}-day`);
   const hour = createElementWithClass('span', `${type}-hour`);
@@ -83,19 +98,13 @@ function startCountdown() {
   updateTime(RELEASE_COUNTDOWN, releaseTime);
 
     if (needToUpdate(earlyTime)) {
-      earlyElement.day.innerText = earlyTime.day;
-      earlyElement.hour.innerText = earlyTime.hour;
-      earlyElement.minute.innerText = earlyTime.minute;
-      earlyElement.second.innerText = earlyTime.second;
+      updateElements(earlyElement, earlyTime);
     } else {
       earlyContainer.innerText = 'ONLINE';
     }
 
     if (needToUpdate(releaseTime)) {
-      releaseElement.day.innerText = releaseTime.day;
-      releaseElement.hour.innerText = releaseTime.hour;
-      releaseElement.minute.innerText = releaseTime.minute;
-      releaseElement.second.innerText = releaseTime.second;
+      updateElements(releaseElement, releaseTime);
     } else {
       releaseContainer.innerText = 'ONLINE';
   
