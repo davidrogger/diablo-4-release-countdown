@@ -1,15 +1,3 @@
-const EARLY_RELEASE = new Date('2023-06-01T20:00:00-03:00');
-const RELEASE = new Date('2023-06-05T20:00:00-03:00');
-const TODAY = new Date();
-
-const EARLY_COUNTDOWN = EARLY_RELEASE - TODAY
-const RELEASE_COUNTDOWN = RELEASE - TODAY
-
-const [earlyContainer, releaseContainer] = document.querySelectorAll('.countdown-container');
-
-const earlyTime = {};
-const releaseTime = {};
-
 function formatTime(time) {
   return time.toString().padStart(2, '0');
 }
@@ -41,17 +29,48 @@ function needToUpdate(time) {
   return isValidDay || isValidHour || isValidMinute || isValidSecond
 }
 
-function createElement(selector) {
+function createElementWithClass(element, className) {
+  const newElement = document.createElement(element);
+  newElement.className = className;
+  return newElement;
+}
+
+function createCountdown(type, location) {
+  const day = createElementWithClass('span', `${type}-day`);
+  const hour = createElementWithClass('span', `${type}-hour`);
+  const minute = createElementWithClass('span', `${type}-minute`);
+  const second = createElementWithClass('span', `${type}-second`);
+
+  [day, hour, minute, second].forEach((element) => {
+    location.appendChild(element)
+  })
+}
+
+function getElements(type, location) {
+  if(!location.querySelector(`.${type}-day`)) {
+    createCountdown(type, location)
+  }
   return {
-    day: document.querySelector(`.${selector}-day`),
-    hour: document.querySelector(`.${selector}-hour`),
-    minute: document.querySelector(`.${selector}-minute`),
-    second: document.querySelector(`.${selector}-second`),
+    day: document.querySelector(`.${type}-day`),
+    hour: document.querySelector(`.${type}-hour`),
+    minute: document.querySelector(`.${type}-minute`),
+    second: document.querySelector(`.${type}-second`),
   }
 }
 
 
-function updateElements() {
+function startCountdown() {
+  const EARLY_RELEASE = new Date('2023-06-01T20:00:00-03:00');
+  const RELEASE = new Date('2023-06-05T20:00:00-03:00');
+
+  const [earlyContainer, releaseContainer] = document.querySelectorAll('.countdown-container');
+
+  const earlyTime = {};
+  const releaseTime = {};
+
+  const earlyElement = getElements('early', earlyContainer);
+  const releaseElement = getElements('release', releaseContainer);
+
   let interval = null
   
   interval = setInterval(() => {
@@ -59,8 +78,6 @@ function updateElements() {
   const EARLY_COUNTDOWN = EARLY_RELEASE - timeNow
   const RELEASE_COUNTDOWN = RELEASE - timeNow
   
-  const earlyElement = createElement('early');
-  const releaseElement = createElement('release');
 
   updateTime(EARLY_COUNTDOWN, earlyTime);
   updateTime(RELEASE_COUNTDOWN, releaseTime);
@@ -91,4 +108,7 @@ function updateElements() {
   }, 1000)
 }
 
-updateElements()
+window.onload = () => {
+  startCountdown()
+}
+
