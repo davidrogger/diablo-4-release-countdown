@@ -1,5 +1,3 @@
-@import url(//db.onlinewebfonts.com/c/ce7ee1905f939d4e0f4cfcb3470c4d4e?family=Old+Fenris);
-
 * {
   padding: 0;
   margin: 0;
@@ -27,7 +25,7 @@ body {
 }
 
 .main-container {
-  background-image: url(./images/d4-lilith-bg-mobile-light.webp);
+  background-image: url(../images/d4-lilith-bg-mobile-light.webp);
   display: flex;
   flex-direction: column;
   margin: auto;
