@@ -1,0 +1,88 @@
+@import url(//db.onlinewebfonts.com/c/ce7ee1905f939d4e0f4cfcb3470c4d4e?family=Old+Fenris);
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Old Fenris", serif;
+}
+
+:root {
+
+  --bg-main: black;
+
+  --text-main: white;
+
+  --text-accent-1: #D2C8AE;
+
+  --text-accent-2: #878582;
+
+  --bg-accent-gray: #343535
+
+  --bg-dark-gray: #1D1E1E;
+}
+
+body {
+  background-color: var(--bg-main);
+}
+
+.main-container {
+  background-image: url(/images/d4-lilith-bg-mobile-light.webp);
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  position: relative;
+  height: 100vh;
+  max-width: 50rem;
+  color: var(--text-main);
+  border: 2px solid rgba(135,133,130,0.1);
+  background-position: 10% 1%;
+  background-repeat: no-repeat;
+}
+
+.logo-container {
+  max-width: 100rem;
+  width:  80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.calendar-container {
+  text-align: center;
+  color: var(--text-accent-1);
+  font-weight: 400;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.calendar-container {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.calendar-container > * {
+  margin-top: 0.5rem;
+  font-size: xx-large;
+}
+
+.calendars-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  bottom: 10px;
+  margin: 0 0 1rem 1.5rem;
+
+}
+
+.countdown-container > * {
+  text-shadow: 3px 3px 10px rgba(255, 250, 0, 0.5);
+}
+
+.office-site {
+  position: absolute;
+  width: 3rem;
+  right: 1rem;
+  bottom: 1rem;
+  opacity: 0.5;
+}
